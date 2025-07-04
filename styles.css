@@ -651,7 +651,7 @@ body {
 .floating-image {
     position: fixed;
     bottom: 30px;
-    right: 620px;
+    right: 20px;
     z-index: 1000;
     pointer-events: none;
     animation: float 3s ease-in-out infinite;
