@@ -1,0 +1,741 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.screen {
+    display: none;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.screen.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Pantalla de inicio */
+.welcome-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    margin: 50px auto;
+    max-width: 600px;
+    animation: bounceIn 1s ease-out;
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.3); opacity: 0; }
+    50% { transform: scale(1.05); }
+    70% { transform: scale(0.9); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.welcome-card h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2rem;
+    color: #667eea;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.welcome-card p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* Botones */
+.btn-primary, .btn-secondary, .btn-success {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Nunito', sans-serif;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}
+
+.btn-secondary {
+    background: #f8f9fa;
+    color: #667eea;
+    border: 2px solid #667eea;
+}
+
+.btn-secondary:hover {
+    background: #667eea;
+    color: white;
+}
+
+.btn-success {
+    background: linear-gradient(45deg, #28a745, #20c997);
+    color: white;
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+}
+
+.btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.6);
+}
+
+/* Pantalla de progreso */
+.progress-header {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.progress-header h2 {
+    font-family: 'Fredoka One', cursive;
+    color: #667eea;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background: #e9ecef;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+.challenges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.challenge-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.challenge-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.challenge-card.locked {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #f8f9fa;
+}
+
+.challenge-card.completed {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+}
+
+.challenge-card.completed::before {
+    content: "✅";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+}
+
+.challenge-number {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #667eea;
+}
+
+.challenge-card.completed .challenge-number {
+    color: white;
+}
+
+.challenge-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.challenge-description {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.challenge-card.completed .challenge-description {
+    color: rgba(255,255,255,0.8);
+}
+
+/* Pantalla de actividad */
+.activity-header {
+    background: white;
+    border-radius: 20px;
+    padding: 20px 30px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.activity-header h3 {
+    font-family: 'Fredoka One', cursive;
+    color: #667eea;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.stars {
+    display: flex;
+    gap: 5px;
+}
+
+.stars span {
+    font-size: 1.5rem;
+    opacity: 0.3;
+    transition: all 0.3s ease;
+}
+
+.stars span.active {
+    opacity: 1;
+    animation: starPulse 0.5s ease;
+}
+
+@keyframes starPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.activity-content {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    min-height: 400px;
+}
+
+.activity-footer {
+    text-align: center;
+}
+
+/* Estilos para diferentes tipos de actividades */
+.question-container {
+    text-align: center;
+}
+
+.question-text {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.options-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.option-btn {
+    padding: 15px 20px;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.option-btn:hover {
+    border-color: #667eea;
+    background: #f8f9ff;
+}
+
+.option-btn.selected {
+    border-color: #667eea;
+    background: #667eea;
+    color: white;
+}
+
+.option-btn.correct {
+    border-color: #28a745;
+    background: #28a745;
+    color: white;
+}
+
+.option-btn.incorrect {
+    border-color: #dc3545;
+    background: #dc3545;
+    color: white;
+}
+
+/* Drag and Drop */
+.drag-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    gap: 20px;
+}
+
+.drag-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.drag-item {
+    padding: 15px;
+    background: #f8f9fa;
+    border: 2px dashed #dee2e6;
+    border-radius: 10px;
+    cursor: grab;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.drag-item:hover {
+    background: #e9ecef;
+    border-color: #667eea;
+}
+
+.drag-item.dragging {
+    opacity: 0.5;
+    transform: rotate(5deg);
+}
+
+.drop-zones {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.drop-zone {
+    padding: 20px;
+    border: 2px dashed #dee2e6;
+    border-radius: 10px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.drop-zone.drag-over {
+    border-color: #667eea;
+    background: #667eea !important;
+    opacity: 0.8 !important;
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.drop-zone.filled {
+    border-color: #28a745;
+    background: #28a745 !important;
+    opacity: 1 !important;
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+
+/* Word completion */
+.word-completion {
+    text-align: center;
+}
+
+.word-display {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 30px 0;
+    letter-spacing: 5px;
+}
+
+.letter-input {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: 2px solid #dee2e6;
+    border-radius: 10px;
+    margin: 0 5px;
+    text-transform: uppercase;
+}
+
+.letter-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+}
+
+/* Pantalla de victoria */
+.victory-card {
+    background: white;
+    border-radius: 20px;
+    padding: 60px 40px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    margin: 50px auto;
+    max-width: 600px;
+    animation: celebration 1s ease-out;
+}
+
+@keyframes celebration {
+    0% { transform: scale(0.5); opacity: 0; }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.victory-card h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 3rem;
+    color: #667eea;
+    margin-bottom: 20px;
+}
+
+.victory-card p {
+    font-size: 1.3rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.trophy {
+    font-size: 5rem;
+    margin: 30px 0;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-20px); }
+    60% { transform: translateY(-10px); }
+}
+
+/* Estilos adicionales para actividades específicas */
+.sequence-container {
+    text-align: center;
+}
+
+.sequence-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.sequence-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #667eea;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    min-width: 50px;
+    text-align: center;
+}
+
+.sequence-input {
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: 2px solid #dee2e6;
+    border-radius: 10px;
+    background: white;
+}
+
+.sequence-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+}
+
+.shapes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.shape-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    border: 2px solid #e9ecef;
+}
+
+.shape-emoji {
+    font-size: 3rem;
+}
+
+.shape-select {
+    padding: 10px;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    background: white;
+    font-size: 1rem;
+    min-width: 150px;
+}
+
+.counting-container {
+    text-align: center;
+}
+
+.items-display {
+    font-size: 3rem;
+    margin: 30px 0;
+    letter-spacing: 10px;
+}
+
+.counting-input {
+    margin-top: 30px;
+}
+
+.counting-input label {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.counting-input input {
+    width: 80px;
+    height: 50px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: 2px solid #dee2e6;
+    border-radius: 10px;
+}
+
+.ordering-container {
+    text-align: center;
+}
+
+.ordering-items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 30px 0;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ordering-item {
+    padding: 15px 20px;
+    background: #f8f9fa;
+    border: 2px solid #dee2e6;
+    border-radius: 10px;
+    cursor: grab;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.ordering-item:hover {
+    background: #e9ecef;
+    border-color: #667eea;
+}
+
+.ordering-item.dragging {
+    opacity: 0.5;
+    transform: rotate(5deg);
+}
+
+.matching-container {
+    text-align: center;
+}
+
+.matching-pairs {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.matching-pair {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.weather-item {
+    font-size: 2rem;
+}
+
+.arrow {
+    font-size: 1.5rem;
+    color: #667eea;
+}
+
+.clothing-select {
+    padding: 10px;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    background: white;
+    font-size: 1rem;
+    min-width: 120px;
+}
+
+.riddle-container {
+    text-align: center;
+}
+
+.riddle-question {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 30px 0;
+    color: #333;
+    font-style: italic;
+}
+
+/* Imagen flotante circular */
+.floating-image {
+    position: fixed;
+    bottom: 30px;
+    right: 620px;
+    z-index: 1000;
+    pointer-events: none;
+    animation: float 3s ease-in-out infinite;
+}
+
+.circular-image {
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    border: 4px solid white;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    transition: all 0.3s ease;
+}
+
+.circular-image:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 35px rgba(102, 126, 234, 0.5);
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .welcome-card {
+        margin: 20px auto;
+        padding: 30px 20px;
+    }
+    
+    .welcome-card h1 {
+        font-size: 2rem;
+    }
+    
+    .challenges-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .activity-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .drag-container {
+        flex-direction: column;
+    }
+    
+    .sequence-display {
+        gap: 5px;
+    }
+    
+    .sequence-number, .sequence-input {
+        font-size: 1.2rem;
+        min-width: 40px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .shapes-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .items-display {
+        font-size: 2rem;
+        letter-spacing: 5px;
+    }
+    
+    .matching-pair {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .floating-image {
+        bottom: 15px;
+        right: 15px;
+    }
+    
+    .circular-image {
+        width: 80px;
+        height: 80px;
+    }
+} 

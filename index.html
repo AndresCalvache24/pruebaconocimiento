@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Aventura Mágica! - Juego Interactivo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Imagen circular en la esquina inferior derecha -->
+        <div class="floating-image">
+            <img src="./IMG20250412132946.jpg" alt="Imagen decorativa" class="circular-image">
+        </div>
+        
+        <!-- Pantalla de inicio -->
+        <div id="start-screen" class="screen active">
+            <div class="welcome-card">
+                <h1>🌟 ¡Camilo Aventura Mágica! 🌟</h1>
+                <p>¡Bienvenido a tu increíble viaje de aprendizaje!</p>
+                <p>Completa 10 pruebas mágicas para llegar a la meta</p>
+                <button id="start-btn" class="btn-primary">¡Comenzar Aventura!</button>
+            </div>
+        </div>
+
+        <!-- Pantalla de progreso -->
+        <div id="progress-screen" class="screen">
+            <div class="progress-header">
+                <h2>🎯 Tu Progreso</h2>
+                <div class="progress-bar">
+                    <div id="progress-fill" class="progress-fill"></div>
+                </div>
+                <p id="progress-text">Prueba 1 de 10</p>
+            </div>
+            
+            <div class="challenges-grid" id="challenges-grid">
+                <!-- Las pruebas se generarán dinámicamente -->
+            </div>
+        </div>
+
+        <!-- Pantalla de actividad -->
+        <div id="activity-screen" class="screen">
+            <div class="activity-header">
+                <button id="back-btn" class="btn-secondary">← Volver</button>
+                <h3 id="activity-title">Título de la Actividad</h3>
+                <div class="stars">
+                    <span id="star1">⭐</span>
+                    <span id="star2">⭐</span>
+                    <span id="star3">⭐</span>
+                </div>
+            </div>
+            
+            <div id="activity-content" class="activity-content">
+                <!-- El contenido de la actividad se cargará dinámicamente -->
+            </div>
+            
+            <div class="activity-footer">
+                <button id="check-btn" class="btn-primary">Verificar Respuesta</button>
+                <button id="next-btn" class="btn-success" style="display: none;">¡Siguiente Prueba!</button>
+            </div>
+        </div>
+
+        <!-- Pantalla de victoria -->
+        <div id="victory-screen" class="screen">
+            <div class="victory-card">
+                <h1>🎉 ¡Felicidades! 🎉</h1>
+                <p>¡Has completado todas las pruebas!</p>
+                <p>Eres un verdadero campeón</p>
+                <div class="trophy">🏆</div>
+                <button id="restart-btn" class="btn-primary">Jugar de Nuevo</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
